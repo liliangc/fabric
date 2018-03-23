@@ -2,6 +2,19 @@
 Changelog
 =========
 
+* :support:`- backported` Update packaging metadata so wheel archives include
+  the ``LICENSE`` file.
+* :release:`1.14.0 <2017-08-25>`
+* :feature:`1475` Honor ``env.timeout`` when opening new remote sessions (as
+  opposed to the initial overall connection, which already honored timeout
+  settings.) Thanks to ``@EugeniuZ`` for the report & ``@jrmsgit`` for the
+  first draft of the patch.
+
+  .. note::
+    This feature only works with Paramiko 1.14.3 and above; if your Paramiko
+    version is older, no timeout can be set, and the previous behavior will
+    occur instead.
+
 * :release:`1.13.2 <2017-04-24>`
 * :release:`1.12.2 <2017-04-24>`
 * :bug:`1542` (via :issue:`1543`) Catch Paramiko-level gateway connection
@@ -19,8 +32,8 @@ Changelog
   `~fabric.contrib.files.append` which would fail if the text contained e.g.
   ``>``. Thanks to ``@ecksun`` for report & Pierce Lopez for the patch.
 * :support:`1065 backported` Fix incorrect SSH config reference in the docs for
-  ``env.keepalive``; it corresponds to ``ClientAliveInterval``, not
-  ``ServerAliveInterval``. Credit: Harry Percival.
+  ``env.keepalive``; it corresponds to ``ServerAliveInterval``, not
+  ``ClientAliveInterval``. Credit: Harry Percival.
 * :bug:`1574` `~fabric.contrib.project.upload_project` failed for folder in
   current directory specified without any path separator. Thanks ``@aidanmelen``
   for the report and Pierce Lopez for the patch.
